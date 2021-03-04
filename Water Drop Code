@@ -1,0 +1,34 @@
+from microbit import *
+
+
+while True:
+    x = accelerometer.get_x()
+    y = accelerometer.get_y()
+
+    PosX = 2
+    PosY = 2
+    
+    if (-1024)<=round(x)<=(-600):
+        Posx = 0
+    elif (-599)<=round(x)<=(-200):
+        Posx = 1
+    elif (-199)<=round(x)<=(200):
+        Posx = 2
+    elif (201)<=round(x)<=(600):
+        Posx = 3
+    elif(601)<=round(x)<=(1000):
+        Posx = 4
+
+    if (-1000)<=round(y)<=(-600):
+        Posy = 0
+    elif (-599)<=round(y)<=(-200):
+        Posy = 1
+    elif (-199)<=round(y)<=(200):
+        Posy = 2
+    elif (201)<=round(y)<=(600):
+        Posy = 3
+    elif(601)<=round(y)<=(1024):
+        Posy = 4
+    
+    display.clear()
+    display.set_pixel(Posx,Posy,9)
