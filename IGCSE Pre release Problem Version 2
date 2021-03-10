@@ -1,0 +1,216 @@
+#Computer Science Project IGCSE Problem Version 2
+Votes = {
+   "Student_votes" :{
+      "Option_A" : {1:0, 2:0, 3:0, 4:0, 5:0 },
+      "Option_B" : {1:0, 2:0, 3:0, 4:0, 5:0 },
+      "Option_C" : {1:0, 2:0, 3:0, 4:0, 5:0 },
+      "Option_D" : {1:0, 2:0, 3:0, 4:0, 5:0 },
+      "Option_E" : {1:0, 2:0, 3:0, 4:0, 5:0 },
+    },  
+    "Teacher_votes" : {
+      "Option_A" : {1:0, 2:0, 3:0, 4:0, 5:0 },
+      "Option_B" : {1:0, 2:0, 3:0, 4:0, 5:0 },
+      "Option_C" : {1:0, 2:0, 3:0, 4:0, 5:0 },
+      "Option_D" : {1:0, 2:0, 3:0, 4:0, 5:0 },
+      "Option_E" : {1:0, 2:0, 3:0, 4:0, 5:0 }, 
+    },
+    } 
+
+Totals = {
+     "A" : 
+      {1 : (Votes["Student_votes"]["Option_A"][1] + Votes["Teacher_votes"]["Option_A"][1]), 
+      2 : (Votes["Student_votes"]["Option_A"][2]) + (Votes["Teacher_votes"]["Option_A"][2]),
+      3 : (Votes["Student_votes"]["Option_A"][3] + Votes["Teacher_votes"]["Option_A"][3]), 
+      4 : (Votes["Student_votes"]["Option_A"][4] + Votes["Teacher_votes"]["Option_A"][4]),
+      5 : (Votes["Student_votes"]["Option_A"][5] + Votes["Teacher_votes"]["Option_A"][5])},
+
+      "B" :
+        {1 : (Votes["Student_votes"]["Option_B"][1] + Votes["Teacher_votes"]["Option_B"][1]), 
+      2 : (Votes["Student_votes"]["Option_B"][2] + Votes["Teacher_votes"]["Option_B"][2]),
+      3 : Votes["Student_votes"]["Option_B"][3] + Votes["Teacher_votes"]["Option_B"][3], 
+      4 : Votes["Student_votes"]["Option_B"][4] + Votes["Teacher_votes"]["Option_B"][4],
+      5 : Votes["Student_votes"]["Option_B"][5] + Votes["Teacher_votes"]["Option_B"][5]},
+
+      "C" :
+        {1 : (Votes["Student_votes"]["Option_C"][1] + Votes["Teacher_votes"]["Option_C"][1]), 
+      2 : (Votes["Student_votes"]["Option_C"][2] + Votes["Teacher_votes"]["Option_C"][2]),
+      3 : Votes["Student_votes"]["Option_C"][3] + Votes["Teacher_votes"]["Option_C"][3], 
+      4 : Votes["Student_votes"]["Option_C"][4] + Votes["Teacher_votes"]["Option_C"][4],
+      5 : Votes["Student_votes"]["Option_C"][5] + Votes["Teacher_votes"]["Option_C"][5]},
+
+      "D" :
+        {1 : (Votes["Student_votes"]["Option_D"][1] + Votes["Teacher_votes"]["Option_D"][1]), 
+      2 : (Votes["Student_votes"]["Option_D"][2] + Votes["Teacher_votes"]["Option_D"][2]),
+      3 : Votes["Student_votes"]["Option_D"][3] + Votes["Teacher_votes"]["Option_D"][3], 
+      4 : Votes["Student_votes"]["Option_D"][4] + Votes["Teacher_votes"]["Option_D"][4],
+      5 : Votes["Student_votes"]["Option_D"][5] + Votes["Teacher_votes"]["Option_D"][5]},
+
+      "E" :
+        {1 : (Votes["Student_votes"]["Option_E"][1] + Votes["Teacher_votes"]["Option_E"][1]), 
+      2 : (Votes["Student_votes"]["Option_E"][2] + Votes["Teacher_votes"]["Option_E"][2]),
+      3 : Votes["Student_votes"]["Option_E"][3] + Votes["Teacher_votes"]["Option_E"][3], 
+      4 : Votes["Student_votes"]["Option_E"][4] + Votes["Teacher_votes"]["Option_E"][4],
+      5 : Votes["Student_votes"]["Option_E"][5] + Votes["Teacher_votes"]["Option_E"][5]}
+    } 
+
+student = {8:1}
+teacher = {165:1}
+
+while True:
+  def Process():
+  
+    #ID Proper entering and Repeat checking system
+    Repeat_check=False 
+    while not Repeat_check:
+      #Verify ID
+      ID_checked=False
+      while not ID_checked: 
+        ID = input("Please enter your credentials (input as a 3 digit number please): ")
+        try:  
+          NumberID=int(ID)
+          ID_checked=True
+        except: print("Sorry, you didn't enter a correct value, Please try again.")
+
+    #Add account and check for Repetition    
+      if 1<=NumberID <=150:
+        try:
+          student[NumberID] 
+          print("Already exists")
+          print(student)
+        
+        except:
+          student[NumberID] = 1   
+          print(student)
+          Login=("Student_votes")
+          Repeat_check=True
+
+      elif 151<=NumberID<=170:
+        try:
+          teacher[NumberID] 
+          print("Already exists")
+          print(teacher)
+        
+        except:
+          teacher[NumberID] = 1   
+          print(teacher)
+          Login=("Teacher_votes")
+          Repeat_check=True
+      else:
+        print("Invalid ID, Please try again")
+
+    #Questions Area
+    print(""" There are five options for the school schedule and we want you to vote on them. The options are:
+        Option A: Start: 8:00 - Finish: 15:00
+        Option B: Start: 8:20 - Finish: 15:20   
+        Option C: Start: 8:40 - Finish: 15:40
+        Option D: Start: 9:00 - Finish: 16:00
+        Option E: Start: 9:30 - Finish: 16:30
+    Please read the Options carefully and Vote for each one with a number from 1 to 5, With 1 being the one you like the most and 5 the one you disagree with the most.
+    """)
+
+    #Question 1
+    Survey_A=False
+    while not Survey_A:
+      print ("Option A: Start at 8:00- Finish at 15:00 ")
+      Vote_A=(input("""How much do you agree with this schedule?
+      """))
+      try:
+        Vote_A=int(Vote_A)
+        if 1>Vote_A or Vote_A>5:
+          print("Please choose an adecuate value (1 to 5)")
+        else:
+          Votes[Login]["Option_A"][Vote_A]+=1      
+          Survey_A=True
+      except:
+        print("Please give a number from 1 to 5")
+
+    #Question 2
+    Survey_B=False
+    while not Survey_B:
+      print ("Option B: Start at 8:20- Finish at 15:20 ")
+      Vote_B=(input("""How much do you agree with this schedule?
+      """))
+      try:
+        Vote_B=int(Vote_B)
+        if 1>Vote_B or Vote_B>5:
+          print("Please choose an adecuate value (1 to 5)")
+        else:
+          Votes[Login]["Option_B"][Vote_B]=+1
+          Survey_B=True
+      except:
+        print("Please give a number from 1 to 5")
+
+    #Question 3
+    Survey_C=False
+    while not Survey_C:
+      print ("Option C: Start at 8:40- Finish at 15:40 ")
+      Vote_C=(input("""How much do you agree with this schedule?
+      """))
+      try:
+        Vote_C=int(Vote_C)
+        if 1>Vote_C or Vote_C>5:
+          print("Please choose an adecuate value (1 to 5)")
+        else:
+          Votes[Login]["Option_C"][Vote_C]=+1
+          Survey_C=True
+      except:
+        print("Please give a number from 1 to 5")
+
+    #Question 4
+    Survey_D=False
+    while not Survey_D:
+      print ("Option D: Start at 9:00- Finish at 16:00 ")
+      Vote_D=(input("""How much do you agree with this schedule?
+      """))
+      try:
+        Vote_D=int(Vote_D)
+        if 1>Vote_D or Vote_D>5:
+          print("Please choose an adecuate value (1 to 5)")
+        else:
+          Votes[Login]["Option_D"][Vote_D]=+1
+          Survey_D=True
+      except:
+        print("Please give a number from 1 to 5")
+
+    #Question 5
+    Survey_E=False
+    while not Survey_E:
+      print ("Option E: Start at 9:30- Finish at 16:30 ")
+      Vote_E=(input("""How much do you agree with this schedule?
+      """))
+      try:
+        Vote_E=int(Vote_E)
+        if 1>Vote_E or Vote_E>5:
+          print("Please choose an adecuate value (1 to 5)")
+        else:
+          Votes[Login]["Option_E"][Vote_E]=+1
+          Survey_E=True
+      except:
+        print("Please give a number from 1 to 5")
+
+    #Results
+    print (f"""
+    The current results are as Follows:
+      Student: 
+      Option A: {Votes["Student_votes"]["Option_A"]}
+      Option B: {Votes["Student_votes"]["Option_B"]}
+      Option C: {Votes["Student_votes"]["Option_C"]}
+      Option D: {Votes["Student_votes"]["Option_D"]}
+      Option E: {Votes["Student_votes"]["Option_E"]}
+      
+      Teachers:
+      Option A: {Votes["Teacher_votes"]["Option_A"]}
+      Option B: {Votes["Teacher_votes"]["Option_B"]}
+      Option C: {Votes["Teacher_votes"]["Option_C"]}
+      Option D: {Votes["Teacher_votes"]["Option_D"]}
+      Option E: {Votes["Teacher_votes"]["Option_E"]}
+
+      Totals:
+      Option A: {Totals["A"]}
+      Option B: {Totals["B"]}
+      Option C: {Totals["C"]}
+      Option D: {Totals["D"]}
+      Option E: {Totals["E"]}
+
+      """)
+
